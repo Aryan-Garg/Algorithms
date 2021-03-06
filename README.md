@@ -2,5 +2,5 @@
 Implementations of Standard Algorithms. 
 
 <ol>
-  <li> Dijkstra's Algorithm: Returns Shortest Single Source Path and Distance</li>
+  <li><strong>Dijkstra's Algorithm:</strong> Returns Shortest Single Source Path and Distance</li>
  </ol>
