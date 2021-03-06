@@ -31,9 +31,10 @@ bool dijkstra(){
   priority_queue<pair<int,int>, vii, greater<pii>> pq;
   pq.push(make_pair(0,1));
   while(!pq.empty()){
-    int u = pq.top().ss;
+    int u = pq.top().ss, d_u = pq.top().ff;
+    
     pq.pop();
-
+    if(d[u] < d_u) continue;
     if(u == n) return true;
 
     seen[u] = 1;
@@ -43,7 +44,7 @@ bool dijkstra(){
       if(!seen[to] && (d[to] > d[u] + len)){ // invariant
         d[to] = d[u] + len;
         p[to] = u;
-        pq.push(make_pair(d[to], to));
+        pq.push({d[to], to});
       }
     }
   }
@@ -66,8 +67,8 @@ int main(){
     int a,b,c;
     rep(i,0,m){
       cin>>a>>b>>c;
-      adj[a].push_back(make_pair(c,b));
-      adj[b].push_back(make_pair(c,a));
+      adj[a].push_back({c,b});
+      adj[b].push_back({c,a});
     }
     if(dijkstra()){
       vector<int> path = getPath(1,n);
